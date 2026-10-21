@@ -9,8 +9,31 @@
   --green: #386a52;
   --green-dark: #254b38;
   --mint: #e8f0e9;
+  --line-strong: #b9c8bd;
+  --orbit: rgba(56, 106, 82, 0.2);
+  --tag-background: #f0f3ef;
+  --tag-ink: #526159;
+  --prose-ink: #36413b;
+  --code-background: #eef2ed;
   --serif: "Manrope", "Segoe UI", sans-serif;
   --sans: "DM Sans", "Segoe UI", sans-serif;
+}
+
+body:has(.theme-toggle-input:checked) {
+  color-scheme: dark;
+  --ink: #e8eee9;
+  --muted: #a3b0a8;
+  --line: #303b34;
+  --paper: #151a17;
+  --green: #8fc4a3;
+  --green-dark: #d2e7d8;
+  --mint: #28382e;
+  --line-strong: #4e6959;
+  --orbit: rgba(143, 196, 163, 0.28);
+  --tag-background: #29332d;
+  --tag-ink: #c3d0c7;
+  --prose-ink: #d0d9d3;
+  --code-background: #202a24;
 }
 
 * {
@@ -27,6 +50,7 @@ body {
   color: var(--ink);
   font-family: var(--sans);
   -webkit-font-smoothing: antialiased;
+  transition: background-color 180ms ease, color 180ms ease;
 }
 
 a {
@@ -50,6 +74,67 @@ a:focus-visible {
   align-items: center;
   justify-content: space-between;
   border-bottom: 1px solid var(--line);
+}
+
+.topbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--muted);
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.theme-toggle-input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  clip-path: inset(50%);
+}
+
+.theme-toggle-track {
+  display: inline-flex;
+  width: 34px;
+  height: 20px;
+  align-items: center;
+  padding: 3px;
+  border: 1px solid var(--line-strong);
+  border-radius: 99px;
+  background: var(--line);
+  transition: background-color 180ms ease, border-color 180ms ease;
+}
+
+.theme-toggle-track span {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--muted);
+  transition: transform 180ms ease, background-color 180ms ease;
+}
+
+.theme-toggle-input:checked + .theme-toggle-track {
+  border-color: var(--green);
+  background: var(--green);
+}
+
+.theme-toggle-input:checked + .theme-toggle-track span {
+  transform: translateX(14px);
+  background: var(--paper);
+}
+
+.theme-toggle-input:focus-visible + .theme-toggle-track {
+  outline: 2px solid var(--green);
+  outline-offset: 3px;
 }
 
 .wordmark {
@@ -127,7 +212,7 @@ a:focus-visible {
 .text-link {
   display: inline-block;
   padding-bottom: 5px;
-  border-bottom: 1px solid #b9c8bd;
+  border-bottom: 1px solid var(--line-strong);
 }
 
 .profile-mark {
@@ -151,7 +236,7 @@ a:focus-visible {
 
 .orbit {
   position: absolute;
-  border: 1px solid rgba(56, 106, 82, 0.2);
+  border: 1px solid var(--orbit);
   border-radius: 50%;
 }
 
@@ -261,8 +346,8 @@ a:focus-visible {
   display: inline-flex;
   padding: 5px 9px;
   border-radius: 3px;
-  background: #f0f3ef;
-  color: #526159;
+  background: var(--tag-background);
+  color: var(--tag-ink);
   font-size: 10px;
 }
 
@@ -315,7 +400,7 @@ a:focus-visible {
 
 .prose {
   padding: 20px 0 12px;
-  color: #36413b;
+  color: var(--prose-ink);
   font-size: 16px;
   line-height: 1.85;
 }
@@ -353,7 +438,7 @@ a:focus-visible {
 .prose blockquote {
   margin-left: 0;
   padding: 4px 0 4px 20px;
-  border-left: 2px solid #a6b9aa;
+  border-left: 2px solid var(--line-strong);
   color: var(--muted);
 }
 
@@ -361,7 +446,7 @@ a:focus-visible {
   overflow-x: auto;
   padding: 18px;
   border-radius: 5px;
-  background: #eef2ed;
+  background: var(--code-background);
   font-size: 13px;
   line-height: 1.6;
 }
@@ -382,6 +467,10 @@ a:focus-visible {
 
   .topbar {
     height: 72px;
+  }
+
+  .topbar-actions {
+    gap: 14px;
   }
 
   .intro {
