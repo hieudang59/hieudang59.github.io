@@ -1,6 +1,6 @@
 # Field Notes
 
-A static blog with HTML templates, CSS styling, and Markdown post content. It does not use Jekyll and needs no JavaScript in the published site. A small Node.js build script converts Markdown into static HTML before publishing.
+A static blog with HTML templates, CSS styling, and Markdown post content. It does not use Jekyll. A small Node.js build script converts Markdown into static HTML before publishing. A small browser script persists the selected color theme between visits.
 
 ## Build
 

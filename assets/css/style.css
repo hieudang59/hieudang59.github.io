@@ -19,7 +19,7 @@
   --sans: "DM Sans", "Segoe UI", sans-serif;
 }
 
-body:has(.theme-toggle-input:checked) {
+html[data-theme="dark"] {
   color-scheme: dark;
   --ink: #e8eee9;
   --muted: #a3b0a8;

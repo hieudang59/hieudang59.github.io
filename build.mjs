@@ -122,16 +122,22 @@ const homeContent = fillTemplate(homeTemplate, {
 const homePage = fillTemplate(defaultLayout, {
   title: "Home",
   description: pageDescription,
+  themeScript: "assets/js/theme.js",
   stylesheet: "assets/css/style.css",
   content: homeContent,
 });
 
 await rm(outputDir, { recursive: true, force: true });
 await mkdir(path.join(outputDir, "assets", "css"), { recursive: true });
+await mkdir(path.join(outputDir, "assets", "js"), { recursive: true });
 await mkdir(path.join(outputDir, "posts"), { recursive: true });
 await copyFile(
   path.join(root, "assets", "css", "style.css"),
   path.join(outputDir, "assets", "css", "style.css"),
+);
+await copyFile(
+  path.join(root, "assets", "js", "theme.js"),
+  path.join(outputDir, "assets", "js", "theme.js"),
 );
 await writeFile(path.join(outputDir, "index.html"), homePage);
 
@@ -148,6 +154,7 @@ for (const post of posts) {
   const page = fillTemplate(defaultLayout, {
     title: escapeHtml(post.title),
     description: escapeHtml(post.excerpt || pageDescription),
+    themeScript: "../../assets/js/theme.js",
     stylesheet: "../../assets/css/style.css",
     content: postContent,
   });
