@@ -132,6 +132,10 @@ await mkdir(path.join(outputDir, "assets", "css"), { recursive: true });
 await mkdir(path.join(outputDir, "assets", "js"), { recursive: true });
 await mkdir(path.join(outputDir, "posts"), { recursive: true });
 await copyFile(
+  path.join(root, "assets", "logo.png"),
+  path.join(outputDir, "assets", "logo.png"),
+);
+await copyFile(
   path.join(root, "assets", "css", "style.css"),
   path.join(outputDir, "assets", "css", "style.css"),
 );

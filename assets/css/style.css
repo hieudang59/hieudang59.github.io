@@ -69,11 +69,15 @@ a:focus-visible {
 }
 
 .topbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
   height: 88px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   border-bottom: 1px solid var(--line);
+  background: var(--paper);
 }
 
 .topbar-actions {
@@ -138,14 +142,17 @@ a:focus-visible {
 }
 
 .wordmark {
-  font-family: var(--serif);
-  font-size: 19px;
-  font-weight: 800;
-  letter-spacing: -0.8px;
+  display: block;
+  width: 95px;
+  height: 59px;
+  background-image: url("../logo.png");
+  background-repeat: no-repeat;
+  background-size: 363% auto;
+  background-position: -48px -57px;
 }
 
-.wordmark span {
-  color: var(--green);
+html[data-theme="dark"] .wordmark {
+  background-position: -211px -57px;
 }
 
 .topbar-link,
@@ -260,6 +267,7 @@ a:focus-visible {
 
 .writing {
   padding: 72px 0 90px;
+  scroll-margin-top: 108px;
 }
 
 .section-heading {
